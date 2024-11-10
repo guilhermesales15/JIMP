@@ -21,7 +21,7 @@ export default function MapMenu() {
   }
 
   // Função para buscar estados na API do IBGE usando axios
-  async function fetchEstados() {
+  async function buscaEstados() {
     try {
       const response = await axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados');
       setEstados(response.data);
@@ -32,7 +32,7 @@ export default function MapMenu() {
 
   useEffect(() => {
     requestLocationPermissions();
-    fetchEstados();
+    buscaEstados();
   }, []);
 
   return (

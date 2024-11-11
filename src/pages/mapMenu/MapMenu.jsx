@@ -255,7 +255,7 @@ export default function MapMenu() {
                 const location = data.results[0].geometry.location;
                 return { latitude: location.lat, longitude: location.lng };
             } else {
-                console.error('Erro na API do Google Maps. Status:', data.status);
+                console.log('Erro na API do Google Maps. Status:', data.status);
                 return null;
             }
         } catch (error) {

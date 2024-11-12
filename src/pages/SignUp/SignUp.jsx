@@ -5,11 +5,14 @@ import Logo from "../../../assets/Logo.png"; // ajuste o caminho conforme necess
 import { Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import { useFonts } from 'expo-font';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../services/firebaseConfig'; // ajuste o caminho conforme necessário
+import { auth } from '../../services/firebaseConfig'; 
+import { useNavigation } from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigation = useNavigation();
 
   function makeSignUp() {
     createUserWithEmailAndPassword(auth, email, password)
@@ -42,8 +45,13 @@ export default function SignUp() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
+
+      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+        <AntDesign name="arrowleft" size={24} color="#2BB490" />
+      </TouchableOpacity>
+
       <Image source={Logo} style={styles.logo} />
-      <Text style={styles.subtitulo}>Descubra vagas de emprego pertinho de você</Text>
+      <Text style={styles.subtitulo}>Preencha seus dados abaixo:</Text>
       
       <TextInput
         keyboardType="email-address"
@@ -108,5 +116,15 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#ffffff",
     fontWeight: "bold",
+  },
+
+  backButton: {
+    position: 'absolute',
+    top: 50, // ajuste conforme necessário
+    left: 20,
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

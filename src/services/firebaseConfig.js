@@ -1,9 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, initializeAuth, getReactNativePersistence } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { API_KEY } from '@env';
+
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAm8Je6hu9GWMy8ff7YMWgo4HyLR_hz_p0",
+  apiKey: API_KEY,
   authDomain: "databaseprojeto-1b139.firebaseapp.com",
   projectId: "databaseprojeto-1b139",
   storageBucket: "databaseprojeto-1b139.appspot.com",

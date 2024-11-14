@@ -19,6 +19,7 @@ export default function SignUp() {
       .then(userCredential => {
         console.log('Usuário criado:', userCredential);
         Alert.alert("Sucesso", "Usuário cadastrado com sucesso!");
+        navigation.navigate('MapMenu'); 
       })
       .catch(error => {
         if (error.code === "auth/email-already-in-use") {

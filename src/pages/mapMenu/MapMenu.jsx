@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 import { Picker } from '@react-native-picker/picker';
 import { AntDesign } from '@expo/vector-icons';
 import estadosData from '../../../assets/estados.json';
+import { API_GOOGLE, API_RAPID } from '@env';
 
 export default function MapMenu() {
     const [location, setLocation] = useState(null); // Latitude e longitude básica
@@ -108,7 +109,7 @@ export default function MapMenu() {
             await fetchRemoteJobs(locationDetails, searchTerm);
 
         } catch (error) {
-            console.error("Erro ao obter a localização do dispositivo:", error);
+            console.log("Erro ao obter a localização do dispositivo:", error);
             Alert.alert("Erro", "Não foi possível obter sua localização. Verifique as permissões.");
         }
     };
@@ -197,7 +198,7 @@ export default function MapMenu() {
                 country: data.address.country || 'desconhecido',
             };
         } catch (error) {
-            console.error('Erro ao obter dados de localização reversa:', error);
+            console.log('Erro ao obter dados de localização reversa:', error);
             return { city: 'local', state: '', country: '' };
         }
     };
@@ -237,7 +238,7 @@ export default function MapMenu() {
             setLoading(false);
 
         } catch (error) {
-            console.error('Erro ao buscar empregos remotos:', error);
+            console.log('Erro ao buscar empregos remotos:', error);
             Alert.alert('Erro', 'Erro ao buscar empregos remotos. Verifique a chave da API e tente novamente.');
             setLoading(false);
         }
@@ -259,7 +260,7 @@ export default function MapMenu() {
                 return null;
             }
         } catch (error) {
-            console.error('Erro ao buscar coordenadas no Google Maps:', error);
+            console.log('Erro ao buscar coordenadas no Google Maps:', error);
             return null;
         }
     };
@@ -308,7 +309,7 @@ export default function MapMenu() {
                 console.log("Mapa recentralizado para:", coordinates);
             }
         } catch (error) {
-            console.error("Erro ao recentralizar o mapa:", error);
+            console.log("Erro ao recentralizar o mapa:", error);
         }
     };
 
